@@ -17,8 +17,9 @@ public class TransferPage {
     }
 
     private void clearField(SelenideElement field) {
-        while (!field.getValue().isEmpty()) {
-            field.doubleClick();
+        if (!field.getValue().isEmpty()) {
+            field.sendKeys(Keys.END);
+            field.sendKeys(Keys.SHIFT, Keys.HOME);
             field.sendKeys(Keys.DELETE);
         }
     }
