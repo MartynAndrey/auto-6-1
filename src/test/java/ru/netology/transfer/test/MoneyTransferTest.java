@@ -303,10 +303,10 @@ public class MoneyTransferTest {
         int secondCardStartBalance = this.dashboardPage.getSecondCardBalance();
         int amount = firstCardStartBalance * 2;
 
-        int[] expected = {firstCardStartBalance - amount, secondCardStartBalance + amount};
+        int[] expected = {firstCardStartBalance, secondCardStartBalance};
 
         TransferPage transferPage = this.dashboardPage.makeDepositSecondCard();
-        this.dashboardPage = transferPage.makeDeposit(amount, DataHelper.CardsInfo.getValidCardNumbers().getFirstCardNumber());
+        this.dashboardPage = transferPage.makeInvalidDeposit(amount, DataHelper.CardsInfo.getValidCardNumbers().getFirstCardNumber());
 
         int firstCardEndBalance = this.dashboardPage.getFirstCardBalance();
         int secondCardEndBalance = this.dashboardPage.getSecondCardBalance();
@@ -400,10 +400,10 @@ public class MoneyTransferTest {
         int secondCardStartBalance = this.dashboardPage.getSecondCardBalance();
         int amount = secondCardStartBalance * 2;
 
-        int[] expected = {firstCardStartBalance + amount, secondCardStartBalance - amount};
+        int[] expected = {firstCardStartBalance, secondCardStartBalance};
 
         TransferPage transferPage = this.dashboardPage.makeDepositFirstCard();
-        this.dashboardPage = transferPage.makeDeposit(amount, DataHelper.CardsInfo.getValidCardNumbers().getSecondCardNumber());
+        this.dashboardPage = transferPage.makeInvalidDeposit(amount, DataHelper.CardsInfo.getValidCardNumbers().getSecondCardNumber());
 
         int firstCardEndBalance = this.dashboardPage.getFirstCardBalance();
         int secondCardEndBalance = this.dashboardPage.getSecondCardBalance();
